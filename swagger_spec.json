@@ -1,0 +1,21 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ishield.ai Express API with Swagger",
+    "version": "0.1.0",
+    "description": "This is a simple CRUD API application made with Express and documented with Swagger",
+    "contact": {
+      "name": "ishield.ai",
+      "url": "https://ishield.ai",
+      "email": "info@ishield.ai"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {},
+  "components": {},
+  "tags": []
+}
