@@ -55,6 +55,68 @@
           }
         }
       }
+    },
+    "/subscriptions/registerOrg": {
+      "post": {
+        "tags": [
+          "org"
+        ],
+        "description": "Register customer organization for given product",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data.teamId": {
+                    "type": "string",
+                    "description": "Workspace identifier of the organization",
+                    "example": "testteam_20220219_03"
+                  },
+                  "data.productId": {
+                    "type": "string",
+                    "description": "Product for which organization is being registered",
+                    "example": "CONV_DOST"
+                  },
+                  "data.emailId": {
+                    "type": "string",
+                    "description": "User's emailId using which organization is being registered",
+                    "example": "jennygraham@myorg.com"
+                  },
+                  "data.orgName": {
+                    "type": "string",
+                    "description": "Name of organization being registered",
+                    "example": "Bridgewater Associates"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "organization object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "description": "Registration status",
+                      "example": "success"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "SERVER ERROR"
+          }
+        }
+      }
     }
   },
   "components": {
