@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "ishield.ai Express API with Swagger",
+    "title": "ishield.ai API using OpenAPI specifications",
     "version": "0.1.0",
-    "description": "This is a simple CRUD API application made with Express and documented with Swagger",
+    "description": "This is a simple CRUD API application made with Express and documented with OpenAPI",
     "contact": {
       "name": "ishield.ai",
       "url": "https://ishield.ai",
@@ -15,7 +15,30 @@
       "url": "http://localhost:3000"
     }
   ],
-  "paths": {},
+  "paths": {
+    "/subscriptions/getOrgDetails": {
+      "post": {
+        "tags": [
+          "org"
+        ],
+        "description": "Get customer organization details",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "organization object",
+            "schema": {
+              "$ref": "#/components/schemas/org"
+            }
+          },
+          "500": {
+            "description": "SERVER ERROR"
+          }
+        }
+      }
+    }
+  },
   "components": {},
   "tags": []
 }
