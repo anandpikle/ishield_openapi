@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "ishield.ai API using OpenAPI specifications",
+    "title": "ishield.ai API specifications",
     "version": "0.1.0",
-    "description": "This is a simple CRUD API application made with Express and documented with OpenAPI",
+    "description": "Subscription API for ishield.ai, documented with OpenAPI 3.0",
     "contact": {
       "name": "ishield.ai",
       "url": "https://ishield.ai",
@@ -59,9 +59,46 @@
   },
   "components": {
     "schemas": {
+      "subscription": {
+        "type": "object",
+        "required": "– planId – priceId – productId",
+        "properties": {
+          "planId": {
+            "type": "string",
+            "description": "Plan id of subscribed plan",
+            "example": "CONV_DOST"
+          },
+          "priceId": {
+            "type": "string",
+            "description": "Price identifier for payments",
+            "example": "cus_LBIMhBNSNViKFR"
+          },
+          "productId": {
+            "type": "string",
+            "description": "Product id for which plan is subscribed",
+            "example": "CONV_DOST"
+          }
+        }
+      },
+      "user": {
+        "type": "object",
+        "required": "– emailId – role",
+        "properties": {
+          "emailId": {
+            "type": "string",
+            "description": "email id of user",
+            "example": "jenny@myteam.com"
+          },
+          "role": {
+            "type": "string",
+            "description": "Role being played by the user",
+            "example": "admin"
+          }
+        }
+      },
       "org": {
         "type": "object",
-        "required": "– title – author – finished",
+        "required": "– teamId – billingId",
         "properties": {
           "teamId": {
             "type": "string",
@@ -78,6 +115,24 @@
             "format": "date",
             "description": "The date of the record creation",
             "example": "2022-02-19T16:26:56.150+00:00"
+          },
+          "activeSubscriptions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/subscription"
+            }
+          },
+          "previousSubscriptions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/subscription"
+            }
+          },
+          "authorizedUsers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/user"
+            }
           }
         }
       }
