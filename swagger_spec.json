@@ -22,14 +22,32 @@
           "org"
         ],
         "description": "Get customer organization details",
-        "produces": [
-          "application/json"
-        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "emailId": {
+                    "type": "string",
+                    "description": "User's emailId for which org details are beign fetched",
+                    "example": "jennygraham@myorg.com"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "organization object",
-            "schema": {
-              "$ref": "#/components/schemas/org"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/org"
+                }
+              }
             }
           },
           "500": {
