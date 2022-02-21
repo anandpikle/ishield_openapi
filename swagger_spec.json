@@ -39,6 +39,31 @@
       }
     }
   },
-  "components": {},
+  "components": {
+    "schemas": {
+      "org": {
+        "type": "object",
+        "required": "– title – author – finished",
+        "properties": {
+          "teamId": {
+            "type": "string",
+            "description": "Team/ org id of the organization entity.",
+            "example": "testteam_20220219_07"
+          },
+          "billingId": {
+            "type": "string",
+            "description": "Customer identifier for payments",
+            "example": "cus_LBIMhBNSNViKFR"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date",
+            "description": "The date of the record creation",
+            "example": "2022-02-19T16:26:56.150+00:00"
+          }
+        }
+      }
+    }
+  },
   "tags": []
 }
