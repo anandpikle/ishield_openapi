@@ -1,0 +1,127 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ishield.ai Conversational API specifications",
+    "version": "0.1.0",
+    "description": "Conversational content analysis API for ishield.ai",
+    "contact": {
+      "name": "ishield.ai",
+      "url": "https://ishield.ai",
+      "email": "info@ishield.ai"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/api/analyzeMessage": {
+      "post": {
+        "description": "Analyzes any message posted on a team or one-on-one chat, on which Dost is installed.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data.tenantId": {
+                    "type": "string",
+                    "description": "Workspace identifier of the organization",
+                    "example": "zxyorg.slack.com"
+                  },
+                  "data.teamId": {
+                    "type": "string",
+                    "description": "Team or channel identifier of the organization",
+                    "example": "testteam_20220219_03"
+                  },
+                  "data.registryUserId": {
+                    "type": "string",
+                    "description": "User's unique identifier in the organization",
+                    "example": "CONV_DOST"
+                  },
+                  "data.email": {
+                    "type": "string",
+                    "description": "User's email for communication (optional)",
+                    "example": "jennygraham@myorg.com"
+                  },
+                  "data.conversationType": {
+                    "type": "string",
+                    "description": "Type of conversation (channel/ personal/ group)",
+                    "example": "channel"
+                  },
+                  "data.messageText": {
+                    "type": "string",
+                    "description": "Message text that was or is to be posted",
+                    "example": "This is a regular message"
+                  },
+                  "data.files": {
+                    "type": "array",
+                    "description": "Images/videos sent as message attachments",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "contentUrl": {
+                          "type": "string",
+                          "description": "Url to extract the attachment",
+                          "example": "https://xyzorg.com/media/abc123.png"
+                        },
+                        "authToken": {
+                          "type": "string",
+                          "description": "Authentication token (if required) to extract the attachment",
+                          "example": "juy_shq16$8998"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Results based on analysis of the message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "description": "API outcome",
+                      "example": "success"
+                    },
+                    "textIssues": {
+                      "type": "array",
+                      "description": "issues identified in message text",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "contextualIssues": {
+                            "type": "array",
+                            "description": "Contextual issues such as microaggression, stereotypes"
+                          },
+                          "keywordDetectionIssues": {
+                            "type": "array",
+                            "description": "Keyword related issues"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "SERVER ERROR"
+          }
+        }
+      }
+    }
+  },
+  "components": {},
+  "tags": []
+}
