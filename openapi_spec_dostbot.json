@@ -18,7 +18,7 @@
   "paths": {
     "/api/analyzeMessage": {
       "post": {
-        "description": "Analyzes any message posted on a team or one-on-one chat, on which Dost is installed.",
+        "description": "Analyze message posted on a team or one-on-one/ group chat, on which Dost is installed.",
         "requestBody": {
           "required": true,
           "content": {
@@ -26,37 +26,37 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "data.tenantId": {
+                  "tenantId": {
                     "type": "string",
                     "description": "Workspace identifier of the organization",
                     "example": "zxyorg.slack.com"
                   },
-                  "data.teamId": {
+                  "teamId": {
                     "type": "string",
                     "description": "Team or channel identifier of the organization",
                     "example": "testteam_20220219_03"
                   },
-                  "data.registryUserId": {
+                  "registryUserId": {
                     "type": "string",
                     "description": "User's unique identifier in the organization",
-                    "example": "CONV_DOST"
+                    "example": "usr09871"
                   },
-                  "data.email": {
+                  "email": {
                     "type": "string",
                     "description": "User's email for communication (optional)",
                     "example": "jennygraham@myorg.com"
                   },
-                  "data.conversationType": {
+                  "conversationType": {
                     "type": "string",
                     "description": "Type of conversation (channel/ personal/ group)",
                     "example": "channel"
                   },
-                  "data.messageText": {
+                  "messageText": {
                     "type": "string",
                     "description": "Message text that was or is to be posted",
                     "example": "This is a regular message"
                   },
-                  "data.files": {
+                  "files": {
                     "type": "array",
                     "description": "Images/videos sent as message attachments",
                     "items": {
