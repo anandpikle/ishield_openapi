@@ -16,9 +16,78 @@
     }
   ],
   "paths": {
-    "/api/analyzeMessage": {
+    "/chat/register": {
       "post": {
-        "description": "Analyze message posted on a team or one-on-one/ group chat, on which Dost is installed.",
+        "description": "Register organization for Dost",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "tenantId": {
+                    "type": "string",
+                    "description": "Workspace identifier of the organization",
+                    "example": "zxyorg.slack.com"
+                  },
+                  "teamId": {
+                    "type": "string",
+                    "description": "Team or channel identifier of the organization",
+                    "example": "testteam_20220219_03"
+                  },
+                  "registryUserId": {
+                    "type": "string",
+                    "description": "User's unique identifier in the organization",
+                    "example": "usr09871"
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "User's email for communication (optional)",
+                    "example": "jennygraham@myorg.com"
+                  },
+                  "conversationType": {
+                    "type": "string",
+                    "description": "Type of conversation (channel/ personal/ group)",
+                    "example": "channel"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Status of registration",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "description": "API outcome",
+                      "example": "success"
+                    },
+                    "orgUnitCount": {
+                      "type": "integer",
+                      "description": "Number of teams/ channels already registered to Dost, in the organization",
+                      "example": "success"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "SERVER ERROR"
+          }
+        }
+      }
+    },
+    "/chat/analyze": {
+      "post": {
+        "description": "Analyze message posted by user",
         "requestBody": {
           "required": true,
           "content": {
